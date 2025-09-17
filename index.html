@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taxi Kitchen</title>
+    <link
+      rel="shortcut icon"
+      href="https://img.icons8.com/?size=160&id=82486&format=png"
+      type="image/x-icon"
+    />
+
+    <!-- font  -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mooli&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- tailwind + daisyui  -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome  -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      * {
+        font-family: "Mooli", sans-serif;
+      }
+
+      .bg-art {
+        background: linear-gradient(
+            rgba(255, 252, 252, 0.884),
+            rgba(255, 252, 252)
+          ),
+          url("assets/bg.png");
+        background-size: 400px; /* make image cover full area */
+        background-position: center; /* center the image */
+        background-attachment: fixed;
+      }
+      .active {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-art">
+    <header
+      class="flex flex-col gap-5 justify-center items-center min-h-screen"
+    >
+      <div class="">
+        <img src="./assets/logo.png" alt="" class="w-[450px]" />
+      </div>
+
+      <div
+        class="w-20 h-20 flex items-center justify-center animate-bounce bg-[#FEBF00] mt-10 rounded-full shadow-xl justify-self-end"
+      >
+        <i class="fa-solid fa-arrow-down text-xl"></i>
+      </div>
+      <h1
+        class="w-full sticky bottom-0 text-center text-xl font-bold p-4 bg-[#FEBF00] rounded"
+      >
+        Digital Menu Card For Our Lovely Customer
+      </h1>
+    </header>
+
+    <main
+      class="grid grid-cols-12 gap-5 mt-10 w-11/12 mx-auto min-h-screen py-4"
+    >
+      <section class="bg-[#FEBF00] col-span-2 rounded-xl p-3">
+        <h1 class="text-xl font-bold text-center bg-white rounded-2xl">
+          Cateogries
+        </h1>
+        <div class="divider"></div>
+
+        <!-- categories  -->
+        <div
+          class="grid grid-cols-1 gap-3 sticky top-0"
+          id="category-container"
+        >
+          <button class="btn btn-block shadow btn-category">
+            <img
+              src="https://www.themealdb.com/images/category/beef.png"
+              alt=""
+              class="w-10"
+            />SeaFood
+          </button>
+          <button class="btn btn-block shadow btn-category">
+            <img
+              src="https://www.themealdb.com/images/category/beef.png"
+              alt=""
+              class="w-10"
+            />SeaFood
+          </button>
+          <button class="btn btn-block shadow btn-category">
+            <img
+              src="https://www.themealdb.com/images/category/beef.png"
+              alt=""
+              class="w-10"
+            />SeaFood
+          </button>
+        </div>
+      </section>
+
+      <section class="col-span-7 p-3">
+        <h1 class="text-xl font-bold text-center rounded-2xl">Our Foods</h1>
+        <div class="divider"></div>
+
+        <div
+          id="loading-spinner"
+          class="min-h-[60vh] flex flex-col justify-center items-center bg-white hidden"
+        >
+          <span class="loading loading-dots loading-xl"></span>
+        </div>
+
+        <div class="grid gird-cols-1 gap-5" id="food-container">
+          <!-- sample card  -->
+          <div class="p-5 bg-white flex gap-3 shadow rounded-xl">
+            <div class="img flex-1">
+              <img
+                src="https://www.themealdb.com/images/media/meals/1520081754.jpg"
+                alt=""
+                class="w-[160px] rounded-xl h-[160px] object-cover"
+              />
+            </div>
+            <div class="flex-2">
+              <h1 class="text-xl font-bold">
+                Roast fennel and aubergine paella
+              </h1>
+
+              <div class="badge badge-warning">Vegan</div>
+
+              <div class="divider divider-end">
+                <h2 class="text-yellow-600 font-semibold">
+                  $ <span class="price">560</span> BDT
+                </h2>
+              </div>
+
+              <button class="btn btn-warning">
+                <i class="fa-solid fa-square-plus"></i>
+                Add This Item
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="col-span-3 p-3 bg-white border-[#FEBF00] border-2 rounded-xl"
+      >
+        <h1 class="text-xl font-bold text-center rounded-2xl">Cart</h1>
+        <div class="divider"></div>
+        <div class="grid grid-cols-1 gap-5" id="cart-container">
+          <!-- sample cart  -->
+        </div>
+
+        <div class="bg-[#FEBF00] mt-10">
+          <h2 class="p-3 text-white font-bold">
+            Total $<span id="cart-total">0</span>BDT
+          </h2>
+        </div>
+      </section>
+    </main>
+
+    <!-- You can open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
+
+    <dialog id="my_modal_3" class="modal">
+      <div class="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+          <button
+            class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          >
+            ✕
+          </button>
+        </form>
+        <div class="" id="details-container"></div>
+      </div>
+    </dialog>
+
+    <script src="./script/index.js"></script>
+  </body>
+</html>
