@@ -156,15 +156,26 @@ const addtoCart = (btn) => {
 
   //   console.log(foodTitle, foodImg, foodPriceNum);
 
-  const selectedItem = {
-    id: cart.length + 1,
+  const isExist = cart.find((item) => item.foodTitle == foodTitle);
+  if (isExist) {
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].foodTitle == foodTitle) {
+        cart[i].quantity++;
+        break;
+      }
+    }
+  } else {
+    const selectedItem = {
+      id: cart.length + 1,
+      quantity: 1,
+      foodTitle: foodTitle,
+      foodImg: foodImg,
+      foodPrice: foodPriceNum,
+    };
 
-    foodTitle: foodTitle,
-    foodImg: foodImg,
-    foodPrice: foodPriceNum,
-  };
-
-  cart.push(selectedItem);
+    cart.push(selectedItem);
+  }
+  console.log(cart);
 
   total = total + foodPriceNum;
 
@@ -198,8 +209,9 @@ const displayCart = (cart) => {
 
               <div class="">
                 <h2 class="text-yellow-600 font-semibold">
-                  $ <span class="item-price">${item.foodPrice}</span> BDT
+                 ${item.quantity} x $ <span class="item-price">${item.foodPrice}</span> BDT
                 </h2>
+                
               </div>
             </div>
             <div onclick="removeCart(this)"
