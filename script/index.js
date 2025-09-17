@@ -19,13 +19,13 @@ const displayCategory = (categories) => {
     //3 - Create html element
     const categoryCard = document.createElement("div");
     categoryCard.innerHTML = `
-          <button id="cat-btn-${cat.id}" onclick="loadFoods(${cat.id})" class="btn justify-start btn-block shadow btn-category">
+          <a href="#food" id="cat-btn-${cat.id}" onclick="loadFoods(${cat.id})" class="btn justify-start btn-block shadow btn-category">
             <img
               src="${cat.categoryImg}"
               alt=""
               class="w-10"
             />${cat.categoryName}
-          </button>`;
+          </a>`;
 
     //4- Append the element
     catContainer.append(categoryCard);
